@@ -1,0 +1,101 @@
+题目描述
+
+构成多边形的顶点依序（顺时针或逆时针均可）存放在单链表（polygon类）中，单链表中的每一个节点（node类）存放一个点。
+
+类node和 polygon如下：
+
+class node{
+
+double x,y;     // 点的平面坐标。
+
+node *next;
+
+public:
+
+node(double xx=0,double yy=0,node *link=NULL);
+
+// 第一二三个参数分别用于初始化x、y、next。
+
+};
+
+class polygon{
+
+node *head;
+
+public:
+
+polygon(); // 构建空表 polygon(double pt[][2],int n);
+
+/* 第一个参数pt，两列的二维数组，按多边形顶点顺序一行存放一个点，第一列存放横坐标x、第二列存放纵坐标y；
+
+第二个参数n，顶点的个数。该构造函数依据参数数据建单链表 */
+
+polygon(polygon &);
+
+~polygon();
+
+double peri();        // 求多边形的周长
+
+};
+
+完成以上两个类的所有public函数，添加必要的说明使得node类的私有成员可以被polygon类操作。
+
+使用polygon类的主函数如下：
+
+int main()
+
+{
+
+const int N = 1024;
+
+double pts[N][2];
+
+int n;
+
+int i;
+
+cin >> n;
+
+for( i=0; i<n ; i++)
+
+cin >> pts[i][0] >> pts[i][1];
+
+ 
+
+polygon  p, q(pts,n);
+
+polygon r(q);
+
+ 
+
+cout << p.peri() << endl;
+
+cout << q.peri() << endl;
+
+cout << r.peri() <<endl;
+
+ 
+
+return 0;
+
+}
+
+注意：主函数不可修改，修改本题0分。
+
+
+输入
+
+多边形顶点数n,后跟多边形的n个依序（顺时针或逆时针）顶点坐标x,y。数据保证构成多边形。
+
+
+输出
+
+输出三行，分别是p、q、r多边形周长。
+
+样例：
+3 0 0 1 1 1 0
+
+输出格式：
+0\n
+3.41421\n
+3.41421\n
