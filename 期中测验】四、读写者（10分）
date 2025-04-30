@@ -1,0 +1,104 @@
+题目描述
+
+读写者问题是一个经典的操作系统进程同步问题。运行中的程序称为进程，即读者或写者进程（体现在权限R/W）。可以使用C++语言设计一个进程类来描述，进程类的属性包括：
+
+1.         进程号PID（私有）
+
+2.         用户名username （私有）
+
+3.         权限（reader/Writer，私有）
+
+4.         CPU用时（time，私有）
+
+5.         所有读者进程总用时(int型私有静态成员变量)
+
+6.         所有写者进程总用时(int型私有静态成员变量)
+
+7.         最久写者进程用时(int型私有静态成员变量)
+
+8.         最多连续出现读者进程数量(int型私有静态成员变量)
+
+9.         其他必要的静态/非静态数据成员
+
+操作包括：
+
+1.        构造函数
+
+2.        显示函数： PID-? User-? as a ? used time-?（具体输出格式参考样例）
+
+3.        计算所有读者进程/写者进程总用时的静态成员函数
+
+4.        记录最久写者进程用时的静态成员函数
+
+5.        记录最多连续出现读者进程数量的静态成员函数
+
+6.        其他必要的静态/非静态成员函数
+
+请用面向对象的思想编程，计算出读写者问题中可能需要提供给操作系统的各项数据，并最终输出统计出的各项数据（格式见样例）:
+
+l  读者进程和写者进程各自的总用时。
+
+l  最久的写者进程用时。
+
+l  最多的连续读者进程数量（如样例里面连续出现的R读者为4个）
+
+ 
+
+要求：
+
+1）所有数据成员都是私有成员。
+
+2）用C++语言面向对象程序设计的思想来编写程序，实现上述要求。
+
+3）必须使用上述的静态成员函数来计算上述的各项统计数据
+
+4）不得使用其他全局函数或全局变量来计算和输出上述的各项统计数据
+
+假设所有的输入都是合法的。
+
+
+输入
+
+第一行：第一个进程号PID，用户名username, 权限（R/W），CPU用时。
+
+第二行：第二个进程，依次类推，直至输入0结束（行数不确定）。
+
+
+输出
+
+第一行：PID-第一个进程的进程号 User-第一个进程的username as a reader/writer used time-第一个进程的CPU用时。
+
+依次类推。
+
+空一行
+
+Total readers' time-读者进程总用时 with maximum 曾出现过的最多连续的读者进程数量 readers at the same time
+
+Total writers' time-写者进程总用时 with maximum writing time 最久写者进程用时
+
+具体请观察样例。
+
+样例：
+4100 YR R 3
+4118 Liu R 4
+4137 Zhou R 3
+1123 YR W 7
+4166 YR R 3
+4168 Liu R 7
+4169 YR R 6
+4170 Liu R 8
+1109 Zhang W 9
+0
+输出格式：
+PID-4100 User-YR as a reader used time-3\n
+PID-4118 User-Liu as a reader used time-4\n
+PID-4137 User-Zhou as a reader used time-3\n
+PID-1123 User-YR as a writer used time-7\n
+PID-4166 User-YR as a reader used time-3\n
+PID-4168 User-Liu as a reader used time-7\n
+PID-4169 User-YR as a reader used time-6\n
+PID-4170 User-Liu as a reader used time-8\n
+PID-1109 User-Zhang as a writer used time-9\n
+\n
+Total readers' time-34 with maximum 4 readers at the same time\n
+Total writers' time-16 with maximum writing time 9\n
